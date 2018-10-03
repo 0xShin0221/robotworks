@@ -1,0 +1,127 @@
+[users]
+user_id{label:"INTEGER"}
+first_name{label:"TEXT"}
+second_name{label:"TEXT"}
+date_joined{label:"DATETIME"}
+email_address{label:"TEXT"}
+password{label:VARCHAR(30)}
+phone{label:VARCHAR(20)}
+status{label:"TEXT"}
+is_banned{label:"BOOLEAN"}
+user_profile{label:"TEXT"}
+created_on{label:"DATETIME"}
+updated_on{label:"DATETIME"}
+user_type{label:"TEXT"}
+
+[usermap]
+usermap_id{label:"INTEGER"}
+user_id{label:"INTEGER"}
+user_type_id{label:"INTEGER"}
+
+[user_type]
+user_type_id{label:"INTEGER"}
+user_type_name{label:"TEXT"}
+
+[message]
+message_id{label:"INTEGER"}
+sent_date{label:"DATETIME"}
+sender_user_id{label:"DATETIME"}
+sender_keep{label:"BOOLEAN"}
+reply_to_message_id{label:"DATETIME"}
+title{label:"TEXT"}
+message_text{label:"TEXT"}
+thread__root_message_id{label:"INTEGER"}
+
+[recipient_message]
+message_id{label:"INTEGER"}
+user_id{label:"INTEGER"}
+recipient_keep{label:"BOOLEAN"}
+recipient_read_date{label:"DATETIME"}
+
+[post_proposition]
+post_proposition_id{label:"INTEGER"}
+user_id{label:"INTEGER"}
+post_proposition_type{label:"INTEGER}
+post_propositon_budgetlabel:"INTEGER}
+post_proposition_title{label:"INTEGER"}
+post_proposition_description{label:"TEXT"}
+categorys{label:"TEXT"}
+
+[category_map]
+category_map_id{label:"INTEGER"}
+post_proposition_id{label:"INTEGER"}
+category_id{label:"INTEGER"}
+
+[category]
+category_id{label:"INTEGER"}
+category_name{label:"TEXT"}
+category_description{label:"TEXT"}
+
+[proposition_detail]
+proposition_detail_id{label:"INTEGER"}
+
+[orders]
+order_number{label:"INTEGER"}
+order_date{label:"DATETIME"}
+status_type_id{label:"INTEGER}
+user_id{label:"INTEGER"}
+
+[order_item]
+orderitem_id{label:"INTEGER}
+orer_number{label:"INTEGER"}
+service_id{label:"INTEGER"}
+service_user_id{label:"INTEGER"}
+service_price{label:"INTEGER"}
+
+[status_type_id]
+status_type_id{label:"INTEGER}
+status_type_name{label:"TEXT"}
+status_code{label:VARCHAR(30)}
+
+[invoice]
+incoice_id{label:"INTEGER"}
+country_id{label:"TEXT"}
+order_number{label:"INTEGER"}
+
+[services]
+service_id{label:"INTEGER"}
+user_id{label:"INTEGER"}
+is_consulting{label:"BOOLEAN"}
+service_name{label:"INTEGER"}
+service_price{label:"INTEGER"}
+service_hour{label:"INTEGER"}
+service_with_tax{label:"INTEGER"}
+service_without_tax{label:"INTEGER"}
+created_on{label:"DATETIME"}
+updated_on{label:"DATETIME"}
+service_type_name{label:"TEXT"}
+tags{label:"TEXT"}
+
+[tagmap]
+tagmap_id{label:"INTEGER"}
+service_id{label:"INTEGER"}
+tag_id{label:"INTEGER"}
+
+[tag]
+tag_id{label:"INTEGER"}
+tag_name{label:"TEXT"}
+
+users 1--+ orders
+users 1--* recipient_message
+users 1--* message
+users 1--? usermap
+usermap 1--+ user_type
+orders +--1 services
+order_item 1--1 orders
+order_item 1--1 invoice
+users 1--+ services
+services 0--+ tagmap
+tagmap 1--1 tag
+tagmap +--+ services
+orders +--1 status_type_id
+
+EOF
+
+
+
+

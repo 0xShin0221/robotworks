@@ -1,0 +1,19 @@
+[[source]]
+verify_ssl = true
+name = "pypi"
+url = "https://pypi.org/simple"
+
+[dev-packages]
+django-extensions = "*"
+ipython = "*"
+bpython = "*"
+
+[packages]
+django = "==2.0.2"
+jupyter = "*"
+notebook = "*"
+ipython = "*"
+graphviz = "*"
+
+[requires]
+python_version = "3.6"
